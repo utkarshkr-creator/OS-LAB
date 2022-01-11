@@ -76,7 +76,21 @@ int main(){
       }
       printf("\n");
   }
-
+printf("Enter Request: \n");
+  int Req[m];
+  for(i=0;i<m;i++)scanf("%d",&Req[i]);
+  int fufu=1;
+  for(i=0;i<m;i++){
+    if(work[i]<Req[i])
+    {
+      fufu=0;
+      break;
+    }
+  }
+  if(fufu && Safe_state){
+    printf("Request Granted\n");
+  }
+  else printf("No\n");
 
 
 
