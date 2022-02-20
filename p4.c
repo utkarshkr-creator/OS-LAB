@@ -27,25 +27,24 @@ int main(){
   
   int i=0,j=0;
   
-  for(i=0;i<n;i++)for(j=0;j<m;j++)scanf("%d",&Allocation[i][j]);
+  for(i=0;i<n;i++){
+    printf("For p[%d]",i);
+      for(j=0;j<m;j++){
+        scanf("%d",&Allocation[i][j]);
+    }
+  }
   
-  printf("Allocation Matrix:\n");
-  
-  for(i=0;i<n;i++){for(j=0;j<m;j++)printf("%d ",Allocation[i][j]);printf("\n");}
   
   printf("Enter Max allocation of Resources per Process: \n");
-  for(i=0;i<n;i++)for(j=0;j<m;j++)scanf("%d",&max[i][j]);
+  for(i=0;i<n;i++){
+    printf("For p[%d]",i);
+    for(j=0;j<m;j++){
+      scanf("%d",&max[i][j]);
+    }
+  }
    
-  printf("Max Matrix:\n");
   
-  for(i=0;i<n;i++){for(j=0;j<m;j++)printf("%d ",max[i][j]);printf("\n");}
-  
-  for(i=0;i<n;i++)for(j=0;j<m;j++)Need[i][j]=max[i][j]-Allocation[i][j];
-   
-  printf("Need Matrix:\n");
-  
-  for(i=0;i<n;i++){for(j=0;j<m;j++)printf("%d ",Need[i][j]);printf("\n");}
-  
+ 
   int Avil[m];
   
   printf("Enter Available Instances Resources: \n");
@@ -71,6 +70,33 @@ int main(){
   for(k=0;k<m;k++)printf("%d ",Avil[k]);
   
   printf("\n");
+  int temp;
+  printf("Enter Request Process Id \n");
+  
+  scanf("%d",&temp);
+  
+  printf("Enter Request For Resources\n");
+  
+  for(i=0;i<m;i++){
+      int t;
+      scanf("%d",&t);
+      Avil[i]-=t;
+      Allocation[temp][i]+=t;
+      
+  }
+  printf("Allocation Matrix:\n");
+  
+  for(i=0;i<n;i++){for(j=0;j<m;j++)printf("%d ",Allocation[i][j]);printf("\n");}
+  
+  printf("Max Matrix:\n");
+  
+  for(i=0;i<n;i++){for(j=0;j<m;j++)printf("%d ",max[i][j]);printf("\n");}
+  
+  for(i=0;i<n;i++)for(j=0;j<m;j++)Need[i][j]=max[i][j]-Allocation[i][j];
+   
+  printf("Need Matrix:\n");
+  
+  for(i=0;i<n;i++){for(j=0;j<m;j++)printf("%d ",Need[i][j]);printf("\n");}
   
   for(k=0;k<n;k++){
       for(i=0;i<n;i++){
@@ -116,27 +142,7 @@ int main(){
       printf("\n");
   }
   
-  printf("Enter Request: \n");
   
-  int Req[m];
-  
-  for(i=0;i<m;i++)scanf("%d",&Req[i]);
-  
-  int fufu=1;
-  
-  for(i=0;i<m;i++){
-    if(work[i]<Req[i])
-    {
-      fufu=0;
-      break;
-    }
-  }
-  
-  if(fufu && Safe_state){
-    printf("Request Granted\n");
-  }
-  
-  else printf("No\n");
 
 
 
